@@ -1,0 +1,77 @@
+{% load static %}
+{% include 'basic/header.html' %}
+<div class="page-title-overlap bg-accent pt-4">
+    <div class="container d-lg-flex justify-content-between py-2 py-lg-3">
+        <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start">
+                    <li class="breadcrumb-item"><a class="text-nowrap" href="index.html"><i
+                                class="czi-home"></i>Home</a></li>
+                    <li class="breadcrumb-item text-nowrap"><a href="marketplace-category.html">Market</a>
+                    </li>
+                    <li class="breadcrumb-item text-nowrap active" aria-current="page">Cart</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="order-lg-1 pr-lg-4 text-center text-lg-left">
+            <h1 class="h3 text-light mb-0">Your cart</h1>
+        </div>
+    </div>
+</div>
+<!-- Page Content-->
+<div class="container mb-5 pb-3">
+    <div class="bg-light box-shadow-lg rounded-lg overflow-hidden">
+        <div class="row">
+            <!-- Content-->
+            <section class="col-lg-8 pt-2 pt-lg-4 pb-4 mb-3">
+                <div class="pt-2 px-4 pr-lg-0 pl-xl-5">
+                    <!-- Header-->
+                    <div class="d-flex flex-wrap justify-content-between align-items-center border-bottom pb-3">
+                        <div class="py-1"><a class="btn btn-outline-accent btn-sm" href=""><i
+                                    class="czi-arrow-left mr-1 ml-n1"></i>Back to shopping</a></div>
+
+
+                    </div>
+                    {% for order_item in object.items.all %}
+                    <div class="media d-block d-sm-flex align-items-center py-4 border-bottom"><a
+                            class="d-block position-relative mb-3 mb-sm-0 mr-sm-4 mx-auto"
+                            href="{% url 'core:remove-single-item-from-cart' order_item.item.slug %}"
+                            style="width: 12.5rem;">
+
+                            <span class="close-floating" data-toggle="tooltip" title="Remove from Cart"><i
+                                    class="czi-close"></i></span></a>
+                        <div class="media-body text-center text-sm-left">
+                            <h3 class="h6 product-title mb-2"><a
+                                    href="marketplace-single.html">{{ order_item.item.title }}</a></h3>
+                            <div class="d-inline-block text-accent">{{ order_item.item.price }}</div><a
+                                class="d-inline-block text-accent font-size-ms border-left ml-2 pl-2"
+                                href="#">{{order_item.item.category}}</a>
+                            <div class="form-inline pt-2">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+                </div>
+            </section>
+            <!-- Sidebar-->
+            <aside class="col-lg-4">
+                <hr class="d-lg-none">
+                <div class="cz-sidebar-static h-100 ml-auto border-left">
+                    <div class="text-center mb-4 pb-3 border-bottom">
+                        <h2 class="h6 mb-3 pb-1">Cart total</h2>
+                        <h3 class="font-weight-normal">{{ order_item.get_total_item_price }}</h3>
+                    </div>
+
+                    <a class="btn btn-primary btn-block mt-4" href="/checkout/"><i
+                            class="czi-locked font-size-lg mr-2"></i>Proceed to Checkout</a>
+                    <div class="text-center pt-2">
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</div>
+
+{% include 'basic/footer.html' %}

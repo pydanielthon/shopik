@@ -1,0 +1,65 @@
+{% load static %}
+{% include 'basic/header.html' %}
+{% load i18n %}
+{% load account socialaccount %}
+{% load crispy_forms_tags %}
+<div class="container py-4 py-lg-5 my-4">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card border-0 box-shadow">
+                <div class="card-body">
+                    <h2 class="h4 mb-1">Sign in</h2>
+                    Please sign in with one
+                    of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
+                    <hr>
+                    <h3 class="font-size-base pt-4 pb-2">Or using form below</h3>
+                    <form class="login" method="POST" action="{% url 'account_login' %}">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        {% if redirect_field_value %}
+                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                        {% endif %}
+                        <a class="btn btn-default"
+                            href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+                        <button class="btn btn-primary" type="submit">{% trans "Sign In" %}</button>
+                    </form>
+                    <form class="needs-validation" novalidate>
+                        <div class="input-group-overlay form-group">
+                            <div class="input-group-prepend-overlay"><span class="input-group-text"><i
+                                        class="czi-mail"></i></span></div>
+                            <input class="form-control prepended-form-control" type="email" placeholder="Email"
+                                required>
+                        </div>
+                        <div class="input-group-overlay form-group">
+                            <div class="input-group-prepend-overlay"><span class="input-group-text"><i
+                                        class="czi-locked"></i></span></div>
+                            <div class="password-toggle">
+                                <input class="form-control prepended-form-control" type="password"
+                                    placeholder="Password" required>
+                                <label class="password-toggle-btn">
+                                    <input class="custom-control-input" type="checkbox"><i
+                                        class="czi-eye password-toggle-indicator"></i><span class="sr-only">Show
+                                        password</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-wrap justify-content-between">
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" type="checkbox" checked id="remember_me">
+                                <label class="custom-control-label" for="remember_me">Remember me</label>
+                            </div><a class="nav-link-inline font-size-sm" href="account-password-recovery.html">Forgot
+                                password?</a>
+                        </div>
+                        <hr class="mt-4">
+                        <div class="text-right pt-4">
+                            <button class="btn btn-primary" type="submit"><i class="czi-sign-in mr-2 ml-n21"></i>Sign
+                                In</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% include 'basic/footer.html' %}

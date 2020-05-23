@@ -1,0 +1,237 @@
+{% load static %}
+{% include 'basic/header.html' %}
+
+<section class="cz-carousel cz-controls-lg">
+  <div class="cz-carousel-inner"
+    data-carousel-options="{&quot;mode&quot;: &quot;gallery&quot;, &quot;responsive&quot;: {&quot;0&quot;:{&quot;nav&quot;:true, &quot;controls&quot;: false},&quot;992&quot;:{&quot;nav&quot;:false, &quot;controls&quot;: true}}}">
+    <!-- Item-->
+    <div class="px-lg-5" style="background-color: #4db8a4;">
+      <div class="d-lg-flex justify-content-between align-items-center pl-lg-4">
+        <img class="d-block order-lg-2 mr-lg-n5 flex-shrink-0" src="{% static 'img/moje/castlefort2.jpg' %}"
+          alt="Summer Collection">
+        <div class="position-relative mx-auto mr-lg-n5 py-5 px-4 mb-lg-5 order-lg-1"
+          style="max-width: 42rem; z-index: 10;">
+          <div class="pb-lg-5 mr-10 mb-lg-5 text-center text-lg-left text-lg-nowrap">
+            <h2 class="text-light font-weight-light pb-1 from-left">For your childs!</h2>
+            <h1 class="text-light display-4 from-left delay-1">Swing Seats</h1>
+            <p class="font-size-lg text-light pb-3 from-left delay-2">Get yours with &amp; free delivery and free
+              installation..</p>
+            <a class="btn btn-dark scale-up delay-4" href="shop-grid-ls.html">Shop Now<i
+                class="czi-arrow-right ml-2 mr-n1"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Item-->
+    <div class="px-lg-5" style="background-color: #f5b1b0;">
+      <div class="d-lg-flex justify-content-between align-items-center pl-lg-4"><img
+          class="d-block order-lg-2 mr-lg-n5 flex-shrink-0" src="{% static 'img/moje/czerwo.jpg' %}"
+          alt="Summer Collection">
+        <div class="position-relative mx-auto mr-lg-n5 py-5 px-4 mb-lg-5 order-lg-1"
+          style="max-width: 42rem; z-index: 10;">
+          <div class="pb-lg-5 mb-lg-5 mr-10 text-center text-lg-left text-lg-nowrap">
+            <h2 class="text-light font-weight-light pb-1 from-bottom">Hurry up! Limited time offer.</h2>
+            <h1 class="text-light display-4 from-bottom delay-1">Climbing Frames</h1>
+            <p class="font-size-lg text-light pb-3 from-left delay-2">Get yours with &amp; free delivery and free
+              installation..</p>
+            <a class="btn btn-dark scale-up delay-4" href="shop-grid-ls.html">Shop Now<i
+                class="czi-arrow-right ml-2 mr-n1"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Item-->
+    <div class="px-lg-5" style="background-color: #eba170;">
+      <div class="d-lg-flex justify-content-between align-items-center pl-lg-4"><img
+          class="d-block order-lg-2 mr-lg-n5 flex-shrink-0" src="{% static 'img/moje/bench1.jpg' %}"
+          alt="Summer Collection">
+        <div class="position-relative mx-auto mr-lg-n5 py-5 px-4 mb-lg-5 order-lg-1"
+          style="max-width: 42rem; z-index: 10;">
+          <div class="pb-lg-5 mb-lg-5 mr-10 text-center text-lg-left text-lg-nowrap">
+            <h2 class="text-light font-weight-light pb-1 from-top">Complete your look with</h2>
+            <h1 class="text-light display-4 from-top delay-1">Sand Pits</h1>
+            <p class="font-size-lg text-light pb-3 from-left delay-2">Get yours with &amp; free delivery and free
+              installation..</p>
+            <a class="btn btn-dark scale-up delay-4" href="shop-grid-ls.html">Shop Now<i
+                class="czi-arrow-right ml-2 mr-n1"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Popular categories-->
+
+<section class="container position-relative pt-3 pt-lg-0 pb-5 mt-lg-n10" style="z-index: 10;">
+  <div class="card px-lg-2 border-0 box-shadow-lg mt-8">
+    <div class="card-body px-4 pt-5 pb-4">
+      <h2 class="h3 text-center">Discover featured products</h2>
+      <p class="text-muted text-center">Every week we hand-pick some of the best items from our collection</p>
+      <!-- Carousel-->
+      <div class="cz-carousel pt-4">
+        <div class="cz-carousel-inner"
+          data-carousel-options="{&quot;items&quot;: 2, &quot;gutter&quot;: 15, &quot;controls&quot;: false, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;500&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3}, &quot;992&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 30}}}">
+          <!-- Product-->
+          {% for item in object_list %}
+          <div>
+
+            <div class="card product-card-alt">
+              <div class="product-thumb">
+                <button class="btn-wishlist btn-sm" type="button"><i class="czi-heart"></i></button>
+                <div class="product-card-actions">
+                  <a class="btn btn-light btn-icon btn-shadow font-size-base mx-2" href="{{ item.get_absolute_url }}">
+                    <i class="czi-eye"></i></a>
+                  <button class="btn btn-light btn-icon btn-shadow font-size-base mx-2" type="button"
+                    data-toggle="toast" data-target="#cart-toast"><i class="czi-cart"></i></button>
+                </div><a class="product-thumb-overlay" href="{{ item.get_absolute_url }}"></a><img
+                  src="{{ item.image.url }}" alt="Product">
+              </div>
+              <div class="card-body">
+                <div class="d-flex flex-wrap justify-content-between align-items-start pb-2">
+                  <div class="text-muted font-size-xs mr-1"><a class="product-meta font-weight-medium"
+                      href="#">{{ item.get_category_display }} </a></div>
+
+                </div>
+                <h3 class="product-title font-size-sm mb-2"><a href="{{ item.get_absolute_url }}">{{ item.title }}</a>
+                </h3>
+                <div class="d-flex flex-wrap justify-content-between align-items-center">
+                  <div class="bg-faded-primary text-primary rounded-sm py-1 px-2">£ {% if item.discount_price %}
+                    {{ item.discount_price }}
+                    {% else %}
+                    {{ item.price }}
+                    {% endif %}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Recent products grid-->
+<section class="container py-4 py-md-5 my-2">
+  <h2 class="text-center mb-4 mb-md-5 pb-2">About The Climbing Frame Factory</h2>
+  <div class="row text-center text-sm-left">
+    <div class="col-lg-5 col-md-6 col-sm-8 offset-lg-2 offset-md-1">
+      <h5 class="mb-3 text-primary">Highlights</h5>
+      <p class="font-size-sm mb-3 mb-lg-4 pb-2">
+        We are a local Co. Armagh Firm with over 30 years combined experience working in all things Wooden. Our climbing
+        frames are designed for children aged from 3-14 years and are ideal for both girls and boys. Our wooden climbing
+        frames look great, are made from quality products but more importantly provide hours of fun in your own garden.
+      </p>
+      <h5 class="mb-3 text-primary">Products</h5>
+      <p class="font-size-sm mb-3 mb-lg-4 pb-2">
+        Our climbing frame range includes playsets which are specially designed for all size gardens and play spaces
+        with play equipment which is ideally suited for younger and older children. We can include the most popular
+        accessories, such as swings, slides, monkey bars and climbing rock walls and all our frames and garden play
+        features can be designed for your children, budget and garden in mind.
+      </p>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-4 offset-md-1">
+
+      <h5 class="mb-3 text-primary">Bespoke Products</h5>
+      <p class="font-size-sm mb-3 mb-lg-4 pb-2">
+        We are able to make anything wooden to your requirements at a price that suits you from the highest quality
+        products.
+      </p>
+      <h5 class="mb-3">Delivery and Installation</h5>
+      Climbing Frame Factory can delivery and install to anywhere in Northern Ireland
+    </div>
+  </div>
+</section>
+<!-- Reviews-->
+<section class="bg-secondary pt-5" style="padding-bottom: 300px;">
+  <div class="container py-md-5 mb-4 pt-3 pb-4">
+    <h2 class="text-center mb-4 mb-md-5 pb-2">Customer reviews</h2>
+    <div class="cz-carousel mb-3">
+      <div class="cz-carousel-inner"
+        data-carousel-options="{&quot;items&quot;: 2, &quot;controls&quot;: false, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1, &quot;gutter&quot;:20}, &quot;576&quot;:{&quot;items&quot;:2, &quot;gutter&quot;:20},&quot;850&quot;:{&quot;items&quot;:3, &quot;gutter&quot;:20},&quot;1080&quot;:{&quot;items&quot;:4, &quot;gutter&quot;:25}}}">
+        {% for r in reviews %}
+        <blockquote class="mb-2">
+          <div class="card border-0 box-shadow-sm"><span class="cz-testimonial-mark"></span>
+            <div class="card-body font-size-md text-muted">
+              <div class="mb-2">
+                <div class="star-rating"><i class="sr-star czi-star-filled active"></i><i
+                    class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i
+                    class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i>
+                </div>
+              </div>{{r.description}}
+            </div>
+          </div>
+          <footer class="d-flex justify-content-center pt-4">
+            <div class="media align-items-center"><img class="rounded-circle" width="50" src="{{r.img.url}}"
+                alt="Richard Davis" />
+              <div class="media-body pl-3">
+                <h6 class="font-size-sm mb-n1">{{r.name}}</h6><span
+                  class="font-size-ms text-muted opacity-75">{{r.created_date}}</span>
+              </div>
+            </div>
+          </footer>
+        </blockquote>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Related products-->
+<section class="container position-relative" style="margin-top: -300px; z-index: 5;">
+  <div class="bg-light rounded-lg box-shadow-lg py-5 px-grid-gutter">
+    <h2 class="text-center pt-2 pt-md-4 mb-4 mb-md-5">You may also like</h2>
+    <div class="cz-carousel">
+      <div class="cz-carousel-inner"
+        data-carousel-options="{&quot;items&quot;: 2, &quot;controls&quot;: false, &quot;autoHeight&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;500&quot;:{&quot;items&quot;:2, &quot;gutter&quot;: 18},&quot;768&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 20}, &quot;1100&quot;:{&quot;items&quot;:4, &quot;gutter&quot;: 30}}}">
+        <!-- Product-->
+        {% for p in products %}
+        <div>
+          <div class="card product-card card-static"><a class="card-img-top d-block overflow-hidden" href="#"><img
+                src="{{p.img1.url}}" alt="Product"></a>
+            <div class="card-body text-center py-2">
+              <h3 class="product-title font-size-sm"><a href="#">{{p.name}}</a></h3>
+              <div class="product-price"><span class="text-primary">£ {{p.price}}</span>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="container-fluid px-0">
+  <div class="row no-gutters">
+    <div class="col-md-6"><a class="card border-0 rounded-0 text-decoration-none py-md-4 bg-accent"
+        href="blog-list-sidebar.html">
+        <div class="card-body text-center"><i class="czi-facebook h3 mt-2 mb-4 text-white"></i>
+          <h3 class="h5 mb-1 text-white">Like us on Facebook</h3>
+        </div>
+      </a></div>
+    <div class="col-md-6"><a class="card border-0 rounded-0 text-decoration-none py-md-4 bg-danger" href="#">
+        <div class="card-body text-center"><i class="czi-instagram h3 mt-2 mb-4 text-white"></i>
+          <h3 class="h5 mb-1 text-white">Follow us on Instagram</h3>
+        </div>
+      </a></div>
+  </div>
+</section>
+<!-- Toast: Added to Cart-->
+<div class="toast-container toast-bottom-center">
+  <div class="toast mb-3" id="cart-toast" data-delay="5000" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header bg-success text-white"><i class="czi-check-circle mr-2"></i>
+      <h6 class="font-size-sm text-white mb-0 mr-auto">Added to cart!</h6>
+      <button class="close text-white ml-2 mb-1" type="button" data-dismiss="toast" aria-label="Close"><span
+          aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="toast-body">This item has been added to your cart.</div>
+  </div>
+</div>
+
+{% include 'basic/footer.html' %}
