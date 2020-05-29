@@ -11,7 +11,7 @@
           alt="Summer Collection">
         <div class="position-relative mx-auto mr-lg-n5 py-5 px-4 mb-lg-5 order-lg-1"
           style="max-width: 42rem; z-index: 10;">
-          <div class="pb-lg-5 mr-10 mb-lg-5 text-center text-lg-left text-lg-nowrap">
+          <div class="pb-lg-5 mr-5 ml-5 mb-lg-5 text-center text-lg-left text-lg-nowrap">
             <h2 class="text-light font-weight-light pb-1 from-left">For your childs!</h2>
             <h1 class="text-light display-4 from-left delay-1">Swing Seats</h1>
             <p class="font-size-lg text-light pb-3 from-left delay-2">Get yours with &amp; free delivery and free
@@ -29,7 +29,7 @@
           alt="Summer Collection">
         <div class="position-relative mx-auto mr-lg-n5 py-5 px-4 mb-lg-5 order-lg-1"
           style="max-width: 42rem; z-index: 10;">
-          <div class="pb-lg-5 mb-lg-5 mr-10 text-center text-lg-left text-lg-nowrap">
+          <div class="pb-lg-5 mr-5 ml-5 mb-lg-5 text-center text-lg-left text-lg-nowrap">
             <h2 class="text-light font-weight-light pb-1 from-bottom">Hurry up! Limited time offer.</h2>
             <h1 class="text-light display-4 from-bottom delay-1">Climbing Frames</h1>
             <p class="font-size-lg text-light pb-3 from-left delay-2">Get yours with &amp; free delivery and free
@@ -47,7 +47,7 @@
           alt="Summer Collection">
         <div class="position-relative mx-auto mr-lg-n5 py-5 px-4 mb-lg-5 order-lg-1"
           style="max-width: 42rem; z-index: 10;">
-          <div class="pb-lg-5 mb-lg-5 mr-10 text-center text-lg-left text-lg-nowrap">
+          <div class="pb-lg-5 mr-5 ml-5 mb-lg-5 text-center text-lg-left text-lg-nowrap">
             <h2 class="text-light font-weight-light pb-1 from-top">Complete your look with</h2>
             <h1 class="text-light display-4 from-top delay-1">Sand Pits</h1>
             <p class="font-size-lg text-light pb-3 from-left delay-2">Get yours with &amp; free delivery and free
@@ -79,11 +79,12 @@
               <div class="product-thumb">
                 <button class="btn-wishlist btn-sm" type="button"><i class="czi-heart"></i></button>
                 <div class="product-card-actions">
-                  <a class="btn btn-light btn-icon btn-shadow font-size-base mx-2" href="{{ item.get_absolute_url }}">
+                  <a class="btn btn-light btn-icon btn-shadow font-size-base mx-2"
+                    href="{% url 'core:product' pk=item.pk %}">
                     <i class="czi-eye"></i></a>
                   <button class="btn btn-light btn-icon btn-shadow font-size-base mx-2" type="button"
                     data-toggle="toast" data-target="#cart-toast"><i class="czi-cart"></i></button>
-                </div><a class="product-thumb-overlay" href="{{ item.get_absolute_url }}"></a><img
+                </div><a class="product-thumb-overlay" href="{% url 'core:product' pk=item.pk %}"></a><img
                   src="{{ item.image.url }}" alt="Product">
               </div>
               <div class="card-body">
@@ -92,7 +93,8 @@
                       href="#">{{ item.get_category_display }} </a></div>
 
                 </div>
-                <h3 class="product-title font-size-sm mb-2"><a href="{{ item.get_absolute_url }}">{{ item.title }}</a>
+                <h3 class="product-title font-size-sm mb-2"><a
+                    href="{% url 'core:product' pk=item.pk %}">{{ item.category }}</a>
                 </h3>
                 <div class="d-flex flex-wrap justify-content-between align-items-center">
                   <div class="bg-faded-primary text-primary rounded-sm py-1 px-2">£ {% if item.discount_price %}
@@ -210,7 +212,7 @@
 <section class="container-fluid px-0">
   <div class="row no-gutters">
     <div class="col-md-6"><a class="card border-0 rounded-0 text-decoration-none py-md-4 bg-accent"
-        href="blog-list-sidebar.html">
+        href="https://www.facebook.com/Climbing-Frame-Factory-1863637083885807">
         <div class="card-body text-center"><i class="czi-facebook h3 mt-2 mb-4 text-white"></i>
           <h3 class="h5 mb-1 text-white">Like us on Facebook</h3>
         </div>
@@ -223,15 +225,5 @@
   </div>
 </section>
 <!-- Toast: Added to Cart-->
-<div class="toast-container toast-bottom-center">
-  <div class="toast mb-3" id="cart-toast" data-delay="5000" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="toast-header bg-success text-white"><i class="czi-check-circle mr-2"></i>
-      <h6 class="font-size-sm text-white mb-0 mr-auto">Added to cart!</h6>
-      <button class="close text-white ml-2 mb-1" type="button" data-dismiss="toast" aria-label="Close"><span
-          aria-hidden="true">&times;</span></button>
-    </div>
-    <div class="toast-body">This item has been added to your cart.</div>
-  </div>
-</div>
 
 {% include 'basic/footer.html' %}

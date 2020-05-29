@@ -8,7 +8,7 @@ from django.views.generic import ListView, DetailView, View
 from django.shortcuts import redirect
 from django.utils import timezone
 from .forms import CheckoutForm, CouponForm, RefundForm, PaymentForm
-from .models import Item, OrderItem, Order, Address, Payment, Coupon, Refund, UserProfile
+from .models import Item, OrderItem, Order, Address, Payment, Coupon, Refund, UserProfile, Category
 
 import random
 import string
@@ -34,6 +34,13 @@ def is_valid_form(values):
             valid = False
     return valid
 
+def local(request):
+    context = {}
+    return render(request, 'payment.html', context)
+
+def payment(request):
+    context = {}
+    return render(request, 'payment.html', context)
 
 class CheckoutView(View):
     def get(self, *args, **kwargs):
@@ -193,9 +200,9 @@ class CheckoutView(View):
                 payment_option = form.cleaned_data.get('payment_option')
 
                 if payment_option == 'D':
-                    return redirect('core:payment', payment_option='stripe')
+                    return redirect('core:payment')
                 elif payment_option == 'P':
-                    return redirect('core:local', payment_option='paypal')
+                    return redirect('core:local')
                 else:
                     messages.warning(
                         self.request, "Invalid payment option selected")
@@ -366,6 +373,16 @@ class ItemDetailView(DetailView):
     model = Item
     template_name = "product2.html"
 
+def category(request, pk):
+    kategoriaa = get_object_or_404(Category, pk=pk)
+    ogl = kategoriaa.category.all()
+
+
+    context =  {
+            'kategoriaa': kategoriaa,
+            'ogl': ogl
+    }
+    return render(request, 'category.html', context)
 
 @login_required
 def add_to_cart(request, slug):

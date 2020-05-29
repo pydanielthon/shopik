@@ -1,6 +1,6 @@
 {% load static %}
 {% include 'basic/header.html' %}
-<div class="page-title-overlap bg-accent pt-4">
+<div class="page-title-overlap bg-primary pt-4">
     <div class="container d-lg-flex justify-content-between py-2 py-lg-3">
         <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
             <nav aria-label="breadcrumb">
@@ -32,12 +32,13 @@
 
 
                     </div>
+
                     {% for order_item in object.items.all %}
                     <div class="media d-block d-sm-flex align-items-center py-4 border-bottom"><a
                             class="d-block position-relative mb-3 mb-sm-0 mr-sm-4 mx-auto"
                             href="{% url 'core:remove-single-item-from-cart' order_item.item.slug %}"
                             style="width: 12.5rem;">
-
+                            <img src="{{order_item.image.url}}">
                             <span class="close-floating" data-toggle="tooltip" title="Remove from Cart"><i
                                     class="czi-close"></i></span></a>
                         <div class="media-body text-center text-sm-left">
@@ -53,6 +54,7 @@
                     </div>
 
                     {% endfor %}
+
                 </div>
             </section>
             <!-- Sidebar-->
